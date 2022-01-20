@@ -94,7 +94,7 @@ CREATE TABLE score(
     eng NUMBER(3) NOT NULL,
     math NUMBER(3) NOT NULL,
     total NUMBER(3),
-    average NUMBER(5,2),
+    averade NUMBER(5,2),
     grage CHAR(1)
 );
 
@@ -104,6 +104,29 @@ CREATE SEQUENCE seq_score;
 ALTER TABLE score RENAME COLUMN grage TO grade;
 
 SELECT*FROM score;
+
+CREATE SEQUENCE seq_board;
+
+CREATE TABLE board (
+    board_no NUMBER(10),
+    writer VARCHAR2(20) NOT NULL,
+    title VARCHAR2(200) NOT NULL,
+    content VARCHAR2(2000),
+    view_cnt NUMBER(10) DEFAULT 0,
+    reg_date DATE DEFAULT SYSDATE,
+    CONSTRAINT pk_board PRIMARY KEY (board_no)
+);
+
+SELECT*FROM board;
+
+UPDATE board
+SET view_cnt = view_cnt+1
+WHERE board_no = 6;
+
+
+
+COMMIT;
+
 
 
 
