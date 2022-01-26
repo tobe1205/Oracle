@@ -98,12 +98,25 @@ CREATE TABLE score(
     grage CHAR(1)
 );
 
+--성적관리 프로그램
+CREATE TABLE score2(
+    stu_num NUMBER(10)PRIMARY KEY,
+    stu_name VARCHAR(50) NOT NULL,
+    kor NUMBER(3) NOT NULL,
+    eng NUMBER(3) NOT NULL,
+    math NUMBER(3) NOT NULL,
+    total NUMBER(3),
+    averade NUMBER(5,2),
+    grage CHAR(1)
+);
 --순차적인 번호를 만드는 방법
 CREATE SEQUENCE seq_score;
 
 ALTER TABLE score RENAME COLUMN grage TO grade;
 
 SELECT*FROM score;
+
+SELECT*FROM score2;
 
 CREATE SEQUENCE seq_board;
 
@@ -123,9 +136,9 @@ UPDATE board
 SET view_cnt = view_cnt+1
 WHERE board_no = 6;
 
-
-
 COMMIT;
+
+SELECT*FROM board2;
 
 
 -- 회원 관리 테이블
@@ -140,6 +153,20 @@ CREATE TABLE member (
 );
 
 SELECT * FROM member;
+
+
+-- 회원 관리 테이블
+CREATE TABLE member2 (
+    account VARCHAR2(50),
+    password VARCHAR2(150) NOT NULL,
+    name VARCHAR2(50) NOT NULL,
+    email VARCHAR2(100) NOT NULL UNIQUE,
+    auth VARCHAR2(20) DEFAULT 'COMMON',
+    reg_date DATE DEFAULT SYSDATE,
+    CONSTRAINT pk_member2 PRIMARY KEY (account)
+);
+
+SELECT * FROM member2;
 
 
 SELECT*FROM member
