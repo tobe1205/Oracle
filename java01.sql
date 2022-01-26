@@ -141,9 +141,24 @@ CREATE TABLE member (
 
 SELECT * FROM member;
 
+
+SELECT*FROM member
+WHERE account = 'aaa1234';
 SELECT COUNT(*) FROM board;
 
 
+-- 직원관리테이블 
+CREATE TABLE project (
+    account VARCHAR2(50),
+    password VARCHAR2(150) NOT NULL,
+    name VARCHAR2(50) NOT NULL,
+    email VARCHAR2(100) NOT NULL UNIQUE,
+    auth VARCHAR2(20) DEFAULT 'COMMON',
+    reg_date DATE DEFAULT SYSDATE,
+    CONSTRAINT pk_project PRIMARY KEY (account)
+);
+
+SELECT * FROM project;
 
 
 
